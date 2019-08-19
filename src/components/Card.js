@@ -1,7 +1,8 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import balloon from "../../assets/balloon.jpg";
-import Lato from "../../assets/Lato/Lato-Regular.ttf";
+import balloon from "../assets/balloon.jpg";
+import Lato from "../assets/Lato/Lato-Regular.ttf";
 
 const GlobalStyle = createGlobalStyle`
     @font-face {
@@ -49,11 +50,11 @@ export default function({
 				</Header>
 				<Body>
 					<Title>Lorem ipsum dolor sit amet</Title>
-					<Text>{status ? "Explore is now activated" : ""}</Text>
+					<Text primary={primary} >{status ? "Explore is now activated" : ""}</Text>
 				</Body>
 				<Segment>
 					<Button onClick={() => setStatus(false)}>SHARE</Button>
-					<Button color="orange" onClick={() => setStatus(!status)}>
+					<Button color={PRIMARY} onClick={() => setStatus(!status)}>
 						EXPLORE
 					</Button>
 				</Segment>
@@ -61,6 +62,8 @@ export default function({
 		</>
 	);
 }
+
+const PRIMARY = "orange";
 
 const Card = styled.div`
 	text-align: center;
@@ -97,7 +100,7 @@ const Segment = styled.div`
 	border-top: 1px solid rgba(150, 160, 162, 0.2);
 	position: absolute;
 	padding-top: 15px;
-	height: 35px;
+	padding-bottom: 15px;
 	width: 100%;
 	bottom: 0px;
 	left: 0px;
@@ -117,6 +120,7 @@ const Caption = styled.p`
 
 const Text = styled.p`
 	font-size: 12px;
+	color: ${({primary}) => primary? PRIMARY : "black"};
 `;
 
 const Title = styled.p`
